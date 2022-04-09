@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { IDeactivateGuard } from 'src/app/shared/guards/auth.guard';
 import { ProductService } from '../services/product.service';
-import { IDeactivateGuard } from 'src/app/shared/guards/navigate-away.guard';
+// import { IDeactivateGuard } from 'src/app/shared/guards/navigate-away.guard';
 
 @Component({
   selector: 'app-add-product',

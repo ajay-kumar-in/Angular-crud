@@ -11,7 +11,6 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { ToastrModule } from 'ngx-toastr';
-import { NavigateAwayGuard } from './shared/guards/navigate-away.guard';
 
 
 @NgModule({
@@ -33,7 +32,6 @@ import { NavigateAwayGuard } from './shared/guards/navigate-away.guard';
     AppRoutingModule,
   ],
   providers: [
-    NavigateAwayGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
