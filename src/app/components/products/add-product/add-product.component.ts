@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from '../services/product.service';
+import { IDeactivateGuard } from 'src/app/shared/guards/navigate-away.guard';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.scss']
 })
-export class AddProductComponent implements OnInit {
+export class AddProductComponent implements OnInit, IDeactivateGuard {
   productForm: any;
   imagePreview!: string;
 
@@ -25,6 +26,13 @@ export class AddProductComponent implements OnInit {
       imagePath: new FormControl('', [Validators.required]),
       status: new FormControl('', [Validators.required]),
     })
+  }
+
+  canExit(): boolean {
+    if (this.productForm.touched) {
+      return confirm('Are you sure to navigate away, All changes will lost !')
+    }
+    return true
   }
 
   onAddProduct() {
@@ -54,5 +62,7 @@ export class AddProductComponent implements OnInit {
     };
     reader.readAsDataURL(file);
   }
+
+  
 
 }
